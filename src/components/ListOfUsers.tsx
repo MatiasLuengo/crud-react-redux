@@ -19,16 +19,16 @@ export default function ListOfUsers() {
   const { deleteUser } = useUsersActions();
 
   return (
-    <section className="border-solid rounded-lg border-2 shadow-md">
-      <div className="sm:flex sm:items-center sm:justify-between sm:space-x-10">
+    <section className="border-solid rounded-lg border-2 shadow-md max-w-[1050px] mx-auto mb-12">
+      <div className="flex items-center justify-between px-4 pt-4">
         <Title className="font-semibold flex items-center gap-x-2">
           Usuarios<Badge>{users.length}</Badge>
         </Title>
         <button
           type="button"
-          className="mt-4 w-full whitespace-nowrap rounded-tremor-small bg-tremor-brand px-4 py-2.5 text-tremor-default font-medium text-tremor-brand-inverted shadow-tremor-input hover:bg-tremor-brand-emphasis dark:bg-dark-tremor-brand dark:text-dark-tremor-brand-inverted dark:shadow-dark-tremor-input dark:hover:bg-dark-tremor-brand-emphasis sm:mt-0 sm:w-fit"
+          className="w-fit bg-blue-500 rounded-md text-white py-2 px-4 flex items-center hover:bg-blue-600"
         >
-          Agregar usuario
+          Agregar usuario<span className="text-2xl font-bold ml-2">+</span>
         </button>
       </div>
       <Table className="mt-8">
@@ -37,7 +37,9 @@ export default function ListOfUsers() {
             <TableHeaderCell className="">Id</TableHeaderCell>
             <TableHeaderCell className="">Nombre</TableHeaderCell>
             <TableHeaderCell className="">Email</TableHeaderCell>
-            <TableHeaderCell className="">Acciones</TableHeaderCell>
+            <TableHeaderCell className="flex justify-center">
+              Acciones
+            </TableHeaderCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -53,9 +55,14 @@ export default function ListOfUsers() {
                 {user.name}
               </TableCell>
               <TableCell>{user.email}</TableCell>
-              <TableCell className="flex items-center gap-x-2">
-                <button>{editSvg}</button>
-                <button onClick={() => deleteUser(user.id)}>{deleteSvg}</button>
+              <TableCell className="flex items-center justify-center gap-x-2">
+                <button className="hover:scale-110">{editSvg}</button>
+                <button
+                  onClick={() => deleteUser(user.id)}
+                  className="hover:scale-110"
+                >
+                  {deleteSvg}
+                </button>
               </TableCell>
             </TableRow>
           ))}
