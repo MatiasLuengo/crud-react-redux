@@ -5,6 +5,7 @@ export const editSvg: React.ReactNode = (
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
+    aria-label="Editar usuario"
   >
     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
     <g
@@ -51,6 +52,7 @@ export const deleteSvg: React.ReactNode = (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    aria-label="Eliminar usuario"
   >
     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
     <g
