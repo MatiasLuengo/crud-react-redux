@@ -10,13 +10,17 @@ import {
   Title,
   Badge,
 } from "@tremor/react";
+import imgUser from "../assets/user.svg";
 
 import { useAppSelector } from "../users/hooks/store";
 import { useUsersActions } from "../users/hooks/useUsersActions";
+import { useState } from "react";
+import CreateNewUser from "./CreateNewUser";
 
 export default function ListOfUsers() {
   const users = useAppSelector((state) => state.users);
   const { deleteUser } = useUsersActions();
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   return (
     <section className="border-solid rounded-lg border-2 shadow-md max-w-[1050px] mx-auto mb-12">
@@ -26,6 +30,7 @@ export default function ListOfUsers() {
         </Title>
         <button
           type="button"
+          onClick={() => setShowCreateModal(true)}
           className="w-fit bg-blue-500 rounded-md text-white py-2 px-4 flex items-center hover:bg-blue-600"
         >
           Agregar usuario<span className="text-2xl font-bold ml-2">+</span>
@@ -48,7 +53,7 @@ export default function ListOfUsers() {
               <TableCell>{user.id}</TableCell>
               <TableCell className="flex items-center gap-x-2">
                 <img
-                  src={`https://unavatar.io/${user.email}`}
+                  src={imgUser}
                   alt={user.name}
                   className="h-8 w-8 rounded-full"
                 />
@@ -68,6 +73,9 @@ export default function ListOfUsers() {
           ))}
         </TableBody>
       </Table>
+      {showCreateModal && (
+        <CreateNewUser onClose={() => setShowCreateModal(false)} />
+      )}
     </section>
   );
 }
