@@ -14,9 +14,9 @@ export interface UserWithId extends User {
 const DEFAULT_STATE = [
   {
     id: 1,
-    name: "Juan Perez",
-    email: "juan.perez@example.com",
-    github: "https://github.com/juanperez",
+    name: "Matías Luengo",
+    email: "dev@matiasluengo.com",
+    github: "https://github.com/MatiasLuengo",
   },
   {
     id: 2,
