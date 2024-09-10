@@ -1,5 +1,6 @@
 import ListOfUsers from "./components/ListOfUsers";
 import { Toaster } from "sonner";
+import imgRedux from "../public/redux.svg";
 function App() {
   return (
     <>
@@ -15,7 +16,7 @@ function App() {
             manejo del estado global con:
           </p>
           <div className="flex items-center gap-x-2 mt-5">
-            <img src="../public/redux.svg" alt="" />
+            <img src={imgRedux} alt="Logo Redux" />
             <p className="text-[#764ABC] text-3xl font-semibold">Redux</p>
           </div>
         </div>
