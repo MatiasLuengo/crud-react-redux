@@ -13,7 +13,9 @@ const persistanceLocalStorageMiddleware: Middleware =
 
 const syncWithDatabaseMiddleware: Middleware =
   (store) => (next) => (action) => {
-    const { type, payload } = action;
+    const actionType = action as { type: string; payload: object };
+    const { type, payload } = actionType;
+    console.log(store);
     next(action);
     if (type === "users/deleteUserById") {
       fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
