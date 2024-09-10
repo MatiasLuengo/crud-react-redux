@@ -43,6 +43,24 @@ const syncWithDatabaseMiddleware: Middleware =
         })
         .catch((err) => toast.error(err));
     }
+
+    if (type === "users/modifyUser") {
+      fetch(`https://jsonplaceholder.typicode.com/posts/1`, {
+        method: "PUT",
+        body: JSON.stringify({
+          ...payload,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => {
+          if (res.ok) {
+            toast.success("Usuario editado");
+          }
+        })
+        .catch((err) => toast.error(err));
+    }
   };
 
 export const store = configureStore({

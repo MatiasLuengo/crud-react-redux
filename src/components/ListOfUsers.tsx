@@ -16,11 +16,15 @@ import { useAppSelector } from "../users/hooks/store";
 import { useUsersActions } from "../users/hooks/useUsersActions";
 import { useState } from "react";
 import CreateNewUser from "./CreateNewUser";
+import EditUser from "./EditUser";
+import { UserWithId } from "../users/slice/slice";
 
 export default function ListOfUsers() {
   const users = useAppSelector((state) => state.users);
   const { deleteUser } = useUsersActions();
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<UserWithId | null>(null);
 
   return (
     <section className="border-solid rounded-lg border-2 shadow-md max-w-[1050px] mx-auto mb-12">
@@ -61,7 +65,15 @@ export default function ListOfUsers() {
               </TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell className="flex items-center justify-center gap-x-2">
-                <button className="hover:scale-110">{editSvg}</button>
+                <button
+                  onClick={() => {
+                    setShowEditModal(true);
+                    setSelectedUser(user);
+                  }}
+                  className="hover:scale-110"
+                >
+                  {editSvg}
+                </button>
                 <button
                   onClick={() => deleteUser(user.id)}
                   className="hover:scale-110"
@@ -75,6 +87,9 @@ export default function ListOfUsers() {
       </Table>
       {showCreateModal && (
         <CreateNewUser onClose={() => setShowCreateModal(false)} />
+      )}
+      {showEditModal && (
+        <EditUser onClose={() => setShowEditModal(false)} user={selectedUser} />
       )}
     </section>
   );
