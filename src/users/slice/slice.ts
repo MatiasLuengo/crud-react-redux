@@ -36,12 +36,6 @@ const DEFAULT_STATE = [
     email: "ana.fernandez@example.com",
     github: "https://github.com/anafernandez",
   },
-  {
-    id: "5",
-    name: "Sofia Rodriguez",
-    email: "sofia.rodriguez@example.com",
-    github: "https://github.com/sofiarodriguez",
-  },
 ];
 
 const initialState: () => UserWithId[] = () => {
